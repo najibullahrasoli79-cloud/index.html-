@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کمپنی تکنولوژی عصری</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e0f7fa;
+      color: #333;
+    }
+    header {
+      background: #00796b;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+    section {
+      padding: 30px 0;
+    }
+    h2 {
+      color: #00796b;
+    }
+    .button {
+      background-color: #8e24aa;
+      color: white;
+      padding: 15px 25px;
+      font-size: 16px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .button:hover {
+      background-color: #7b1fa2;
+    }
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .upload-section {
+      display: flex;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>کمپنی تکنولوژی عصری</h1>
+    <p>مالک و توسعه‌دهنده: انجینر نجیب الله رسولی</p>
+    <p>تماس با ما: <a href="tel:+93778084302">+93778084302</a> | <a href="https://wa.me/93778084302" target="_blank">واتساپ</a></p>
+  </header>
+
+  <div class="container">
+    <!-- صفحه اول -->
+    <section>
+      <h2>درباره من</h2>
+      <p>من، انجینر نجیب الله رسولی، مالک و توسعه‌دهنده شرکت تکنولوژی عصری هستم. ما در زمینه ساخت برنامه‌ها، اپلیکیشن‌های موبایل و وب‌سایت‌ها تخصص داریم.</p>
+    </section>
+
+    <!-- صفحه دوم -->
+    <section>
+      <h2>خدمات ما</h2>
+      <p>ما در زمینه ساخت وب‌سایت‌ها و اپلیکیشن‌های موبایل با امنیت بالا و قیمت مناسب فعالیت می‌کنیم. تمامی پروژه‌ها طبق استانداردهای جهانی انجام می‌شود.</p>
+      <button class="button" onclick="alert('قوانین پروژه‌ها')">قانون رویش</button>
+      <p>1. قرار داد و پروژه‌های آنلاین، 2. هیچ‌گونه تغییرات در میانه پروژه پذیرفته نمی‌شود، 3. پرداخت 20٪ پیش از شروع پروژه، 50٪ هنگام تکمیل و 30٪ پس از تحویل پروژه.</p>
+    </section>
+
+    <!-- صفحه سوم -->
+    <section>
+      <h2>گالری</h2>
+      <div class="gallery-container">
+        <h3>بارگذاری و اشتراک‌گذاری ویدیوها و عکس‌ها</h3>
+
+        <div class="upload-section">
+          <div>
+            <label for="upload-video" class="button">آپلود ویدیو</label>
+            <input type="file" id="upload-video" accept="video/*" style="display:none" onchange="uploadFile('video')">
+          </div>
+
+          <div>
+            <label for="upload-photo" class="button">آپلود عکس</label>
+            <input type="file" id="upload-photo" accept="image/*" style="display:none" onchange="uploadFile('photo')">
+          </div>
+        </div>
+
+        <p>برای اشتراک‌گذاری ویدیو و عکس‌ها، فقط خود شما می‌توانید فایل‌ها را بارگذاری کنید.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function uploadFile(type) {
+      const fileInput = type === 'video' ? document.getElementById('upload-video') : document.getElementById('upload-photo');
+      const file = fileInput.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          // نمایش ویدیو یا عکس آپلود شده در صفحه
+          const previewContainer = document.createElement(type === 'video' ? 'video' : 'img');
+          previewContainer.src = reader.result;
+          previewContainer.style.width = '300px';
+          previewContainer.style.marginTop = '15px';
+          previewContainer.controls = type === 'video'; // فقط برای ویدیو دکمه‌های کنترل نمایش داده شود
+          
+          // افزودن به صفحه
+          document.querySelector('.gallery-container').appendChild(previewContainer);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
